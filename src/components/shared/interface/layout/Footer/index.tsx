@@ -4,7 +4,8 @@ import { urlFor } from "@/lib/sanityImage"
 import Image from "next/image"
 import Link from "next/link"
 import React from 'react'
-
+import { motion } from "framer-motion";
+import { animationsVariants } from "./Footer.utils"
 
 type Props = {
   config: SiteConfigType
@@ -12,7 +13,13 @@ type Props = {
 const Footer = ({config}: Props) => {
   return (
     <footer className="w-full bg-gradient-to-r from-primary-500 via-secondaryGradient-500 to-tertiaryGradient-500">
-      <div className="container py-16 px-4 md:py-0 md:px-16 md:h-[650px]">
+      <motion.div
+        className="container py-16 px-4 md:py-0 md:px-16 md:h-[650px]"
+        variants={animationsVariants.downAnimation}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         <div className="w-full h-full flex flex-col items-center justify-center gap-8 md:gap-20">
           <div className="flex flex-col gap-5 items-center">
             <div className="flex flex-col items-center gap-3">
@@ -61,7 +68,7 @@ const Footer = ({config}: Props) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   )
 }

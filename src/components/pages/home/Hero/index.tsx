@@ -3,6 +3,8 @@ import { HeroDataType } from "@/groq/home"
 import { urlFor } from "@/lib/sanityImage";
 import Image from "next/image";
 import React from 'react'
+import { motion } from "framer-motion";
+import { animationsVariants } from "./Hero.utils";
 
 type Props = {
   heroData: HeroDataType;
@@ -10,7 +12,13 @@ type Props = {
 const HeroSection = ({ heroData }: Props) => {
   return (
     <section id="hero" className="w-full bg-gradient-to-r from-primary-500 via-secondaryGradient-500 to-tertiaryGradient-500">
-      <div className="container px-4 pt-14 md:h-[624px] md:px-16">
+      <motion.div
+        className="container px-4 pt-14 md:h-[624px] md:px-16"
+        variants={animationsVariants.downAnimation}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         <div className="w-full flex flex-col gap-8 items-start md:items-center md:flex-row md:justify-between">
           <div className="flex flex-col items-start gap-3.5 md:max-w-[609px]">
             <div className="flex flex-col items-start gap-1">
@@ -43,7 +51,7 @@ const HeroSection = ({ heroData }: Props) => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

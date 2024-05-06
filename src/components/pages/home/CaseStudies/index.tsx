@@ -1,6 +1,8 @@
 import CTAButton from "@/components/ui/CTAButton";
 import { CaseStudiesType } from "@/groq/home"
 import React from 'react'
+import { motion } from "framer-motion";
+import { animationsVariants } from "./CaseStudies.utils";
 
 type Props = {
   caseStudiesData: CaseStudiesType;
@@ -8,7 +10,13 @@ type Props = {
 const CaseStudies = ({ caseStudiesData }: Props) => {
   return (
     <section id="case-studies" className="w-full bg-white">
-      <div className="container py-16 px-4 md:py-0 md:h-[650px] md:px-16">
+      <motion.div
+        className="container py-16 px-4 md:py-0 md:h-[650px] md:px-16"
+        variants={animationsVariants.downAnimation}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         <div className="w-full h-full flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-8 md:gap-16 md:flex-row md:justify-normal md:items-center">
             <div className="flex flex-col items-start gap-5">
@@ -56,7 +64,7 @@ const CaseStudies = ({ caseStudiesData }: Props) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

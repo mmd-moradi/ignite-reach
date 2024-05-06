@@ -3,7 +3,8 @@ import { ServicesDataType } from "@/groq/home";
 import { urlFor } from "@/lib/sanityImage";
 import Image from "next/image";
 import React from 'react'
-
+import { motion } from "framer-motion";
+import { animationsVariants } from "./ServicesSection.utils";
 
 type Props = {
   servicesData: ServicesDataType;
@@ -12,7 +13,13 @@ type Props = {
 const ServicesSection = ({ servicesData }: Props) => {
   return (
     <section id="services" className="w-full bg-gradient-to-r from-primary-500 via-secondaryGradient-500 to-tertiaryGradient-500">
-      <div className="container px-4 py-14 border-0 md:pb-0 md:h-[700px] md:px-16">
+      <motion.div
+        className="container px-4 py-14 border-0 md:pb-0 md:h-[700px] md:px-16"
+        variants={animationsVariants.downAnimation}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         <div className="w-full h-full flex flex-col items-center justify-center">
           <div className="w-full flex flex-col items-center justify-center gap-8 md:flex-row md:gap-[120px]">
             <div className="flex flex-col items-start gap-8 max-w-[520px]">
@@ -47,7 +54,7 @@ const ServicesSection = ({ servicesData }: Props) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

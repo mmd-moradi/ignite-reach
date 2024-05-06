@@ -6,6 +6,8 @@ import { InlineWidget } from "react-calendly";
 import BlockContent from "@sanity/block-content-to-react";
 import { Book, Check, CircleCheck } from "lucide-react";
 import { FaCheckCircle } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { animationsVariants } from "./BookCall.utils";
 
 type Props = {
   BookCallData: BookCallDataType;
@@ -14,7 +16,13 @@ const BookCallsection = ({BookCallData}: Props) => {
   const bookCallReasons = [BookCallData.bookCallReason1, BookCallData.bookCallReason2, BookCallData.bookCallReason3, BookCallData.bookCallReason4, BookCallData.bookCallReason5]
   return (
     <section id="book-a-call" className="w-full bg-white">
-      <div className="container px-4 py-16 border-0 md:py-0 md:h-[1020px] md:px-16">
+      <motion.div
+        className="container px-4 py-16 border-0 md:py-0 md:h-[1020px] md:px-16"
+        variants={animationsVariants.opacityAnimation}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         <div className="w-full h-full flex flex-col items-center justify-center">
           <div className="flex flex-col items-start justify-center gap-8 md:items-center md:flex-row md:gap-[130px]">
             <div className="flex flex-col items-start gap-5 md:hidden">
@@ -105,7 +113,7 @@ const BookCallsection = ({BookCallData}: Props) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

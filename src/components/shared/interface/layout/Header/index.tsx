@@ -2,7 +2,7 @@ import { SiteConfigType } from "@/groq/config"
 import { urlFor } from "@/lib/sanityImage";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import {
   Sheet,
   SheetContent,
@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/sheet"
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { animationsVariants } from "./Header.utils";
 
 type Props = {
   config: SiteConfigType;
@@ -18,8 +20,16 @@ const Header = ({ config }: Props) => {
   const [clicked, setClicked] = useState(false);
   return (
     <div className="w-full bg-gradient-to-r from-primary-500 via-secondaryGradient-500 to-tertiaryGradient-500">
-      <header className="pt-8 container px-4 md:px-16">
-        <div className="w-full flex items-center justify-between">
+      <motion.header
+        className="pt-8 container px-4 md:px-16"
+        variants={animationsVariants.position}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <div 
+          className="w-full flex items-center justify-between"
+        >
           <Link
             href="/"
             passHref
@@ -68,7 +78,7 @@ const Header = ({ config }: Props) => {
             </SheetContent>
           </Sheet>
         </div>
-      </header>
+      </motion.header>
     </div>
   )
 }
