@@ -37,7 +37,7 @@ const Footer = ({config}: Props) => {
               href="/"
               passHref
             >
-              <div className="relative w-[146px] h-[44px]">
+              <div className="relative w-[194px] h-[44px]">
                 <Image
                   alt={config.footerLogo.alt}
                   src={urlFor(config.footerLogo).url()}
